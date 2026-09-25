@@ -146,31 +146,85 @@
          </h1>
     </div>
 
-    <div class="data-box">
+   <div class="data-box">
         <div class="box-heading">SIGN UP</div>
 
-        <input class="input-field" type="text" placeholder="First Name">
-        <input class="input-field" type="text" placeholder="Last Name">
+        <input class="input-field" type="text" placeholder="First Name" id="first_name">
+        <input class="input-field" type="text" placeholder="Last Name" id="last_name">
 
-        <input class="input-field" type="text" placeholder="Middle Name">
-        <input class="input-field" type="date" placeholder="Birthdate">
+        <input class="input-field" type="text" placeholder="Middle Name" id="middle_name">
+        <input class="input-field" type="date" placeholder="Birthdate" id="birthdate">
 
-        <select class="input-field">
+        <select class="input-field" id="gender">
             <option value="" disabled selected>Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
         </select>
-        <input class="input-field" type="tel" placeholder="Phone Number">
+        <input class="input-field" type="tel" placeholder="Phone Number" id="phone_number">
 
-        <input class="input-field full-width" type="email" placeholder="Email">
-        <input class="input-field full-width" type="text" placeholder="Address">
-        <input class="input-field full-width" type="text" placeholder="Username">
-        <input class="input-field full-width" type="password" placeholder="Password">
+        <input class="input-field full-width" type="email" placeholder="Email" id="email">
+        <input class="input-field full-width" type="text" placeholder="Address" id="address">
+        <input class="input-field full-width" type="text" placeholder="Username" id="username">
+        <input class="input-field full-width" type="password" placeholder="Password" id="password_hash">
 
-        <div class="design-button">SIGN UP</div>
+        <div class="design-button" onClick="Click()">SIGN UP</div>
 
         <div class="design-footer-text">Already have an account?</div>
     </div>
+
+    <script>
+        // Include both input and select tags
+        const inputs = document.querySelectorAll('input, select');
+        const user = {
+            role_id: 5, // Default to 'Customer' role
+            first_name: "",
+            middle_name: "",
+            last_name: "",
+            birthdate: "",
+            gender: "",
+            phone_number: "",
+            email: "",
+            address: "",
+            username: "",
+            password_hash: ""
+        };
+
+        function Click() {
+            // Collect form values dynamically matching element IDs to user object keys
+            inputs.forEach(input => {
+                if (input.id && user.hasOwnProperty(input.id)) {
+                    user[input.id] = input.value;
+                }
+            });
+
+            // Validation: Ensure required fields are not empty
+            if (!user.username || !user.password_hash) {
+                alert("Please fill in Username and Password!");
+                return;
+            }
+
+            // Send data to PHP backend
+            fetch('register.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.status === 'success') {
+                    console.log("Success:", data);
+                    // Redirect to login page or clear form inputs here
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Something went wrong connecting to the server.');
+            });
+        }
+    </script>
 </body>
 </html>
