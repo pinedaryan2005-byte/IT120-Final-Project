@@ -14,17 +14,31 @@
             min-height: 100vh;
             margin: 0;
         }
+        .solar-panel {
+            width: 100%;
+            min-height: 350px;
 
+            background-image:
+              linear-gradient(
+                rgba(0,0,0,0.25),
+                rgba(0,0,0,0.25)
+            ), url("panelbg.png");
+
+            background-size: cover;
+            background-postion: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .main-title {
             text-align: center;
             margin: 0;
-            padding-top: 50px;
             color: #ffffff;
             font-size: 7rem;
             font-family: 'Times New Roman', Times, serif;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: center;
         }
         .sun {
             color: red;
@@ -45,6 +59,7 @@
             font-family: tahoma, sans-serif;
             text-align: left;
             margin-top: 40px;
+            margin-bottom: 40px;
 
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -92,6 +107,8 @@
             letter-spacing: 0.5px;
             grid-column: 1 / -1;
             cursor: pointer;
+            transition: 0.3s;
+
         }
         .design-footer-text {
             text-align: center;
@@ -106,22 +123,36 @@
             color: rgb(255,243,136);
             text-decoration: underline;
         }
+
+        @media (max-width: 700px) {
+            .main-title { font-size: 4rem;}
+            .solar-panel{ min-height: 280px;}
+            .data-box {
+                width: 85%;
+                padding: 30px 25px;
+                grid-template-columns: 1fr;
+            }
+            .full-width{grid-column: 1;}
+            .box-heading,.design-button,.design-footer-text {grid-column: 1;}
+        }
     </style>
 </head>
 <body>
-    <h1 class="main-title">
-    <span class="sun">SUN</span>
-    <span class="son">SON</span>
-    <span class="solar">SOLAR</span>
-    </h1>
+    <div class="solar-panel">
+            <h1 class="main-title">
+            <span class="sun">SUN</span>
+            <span class="son">SON</span>
+            <span class="solar">SOLAR</span>
+         </h1>
+    </div>
 
-    <div class="data-box">
+   <div class="data-box">
         <div class="box-heading">SIGN UP</div>
 
-        <input class="input-field" type="text" placeholder="First Name" id="firstName">
-        <input class="input-field" type="text" placeholder="Last Name" id="lastName">
+        <input class="input-field" type="text" placeholder="First Name" id="first_name">
+        <input class="input-field" type="text" placeholder="Last Name" id="last_name">
 
-        <input class="input-field" type="text" placeholder="Middle Name" id="middleName">
+        <input class="input-field" type="text" placeholder="Middle Name" id="middle_name">
         <input class="input-field" type="date" placeholder="Birthdate" id="birthdate">
 
         <select class="input-field" id="gender">
@@ -130,45 +161,71 @@
             <option value="female">Female</option>
             <option value="other">Other</option>
         </select>
-        <input class="input-field" type="tel" placeholder="Phone Number" id="telNo">
+        <input class="input-field" type="tel" placeholder="Phone Number" id="phone_number">
 
         <input class="input-field full-width" type="email" placeholder="Email" id="email">
         <input class="input-field full-width" type="text" placeholder="Address" id="address">
         <input class="input-field full-width" type="text" placeholder="Username" id="username">
-        <input class="input-field full-width" type="password" placeholder="Password" id="password">
+        <input class="input-field full-width" type="password" placeholder="Password" id="password_hash">
 
         <div class="design-button" onClick="Click()">SIGN UP</div>
 
         <div class="design-footer-text">Already have an account?</div>
     </div>
 
-
     <script>
-        const inputs = document.querySelectorAll('input')
+        // Include both input and select tags
+        const inputs = document.querySelectorAll('input, select');
         const user = {
-            firstName:"",
-            middleName:"",
-            lastName:"",
-            birthdate:"",
-            gender:"",
-            telNo:"",
-            email:"",
-            address:"",
-            username:"",
-            password:""
-        }
+            role_id: 5, // Default to 'Customer' role
+            first_name: "",
+            middle_name: "",
+            last_name: "",
+            birthdate: "",
+            gender: "",
+            phone_number: "",
+            email: "",
+            address: "",
+            username: "",
+            password_hash: ""
+        };
 
-        function Click(){
-            inputs.forEach(input=>{
-                if(input.id){
-                    user[input.id] = input.value
+        function Click() {
+            // Collect form values dynamically matching element IDs to user object keys
+            inputs.forEach(input => {
+                if (input.id && user.hasOwnProperty(input.id)) {
+                    user[input.id] = input.value;
+                }
+            });
+
+            // Validation: Ensure required fields are not empty
+            if (!user.username || !user.password_hash) {
+                alert("Please fill in Username and Password!");
+                return;
+            }
+
+            // Send data to PHP backend
+            fetch('register.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.status === 'success') {
+                    console.log("Success:", data);
+                    // Redirect to login page or clear form inputs here
                 }
             })
-            console.log(user)
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Something went wrong connecting to the server.');
+            });
         }
-        
-        
-       
     </script>
 </body>
 </html>
+    
