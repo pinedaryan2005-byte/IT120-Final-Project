@@ -1,0 +1,1422 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sun Son Solar</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, sans-serif;
+            color: #ffffff;
+
+            background:
+                linear-gradient(
+                    0deg,
+                    #ffd56b,
+                    #ff9a56,
+                    #ff6f91
+                );
+
+            min-height: 100vh;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            width: 100%;
+
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(10px);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 15px 6%;
+
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-logo {
+            text-decoration: none;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .nav-logo .sun {
+            color: red;
+        }
+
+        .nav-logo .son {
+            color: orange;
+        }
+
+        .nav-logo .solar {
+            color: yellow;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff38a;
+        }
+
+        .nav-login {
+            background: #fdfd96;
+            color: #000 !important;
+
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        .nav-login:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .solar-panel {
+            width: 100%;
+            min-height: 650px;
+
+            background-image:
+                linear-gradient(
+                    rgba(0,0,0,0.35),
+                    rgba(0,0,0,0.45)
+                ),
+                url("panelbg.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 40px;
+        }
+
+        .main-title {
+            margin: 0;
+
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 7rem;
+
+            line-height: 0.95;
+
+            text-shadow:
+                2px 2px 10px rgba(0,0,0,0.6);
+        }
+
+        .sun {
+            color: red;
+        }
+
+        .son {
+            color: orange;
+        }
+
+        .solar {
+            color: yellow;
+        }
+
+        .hero-tagline {
+            font-size: 2rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+
+            font-weight: bold;
+
+            text-shadow:
+                2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: auto;
+
+            font-size: 1.1rem;
+            line-height: 1.7;
+
+            text-shadow:
+                1px 1px 5px rgba(0,0,0,0.7);
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .hero-button {
+            text-decoration: none;
+
+            padding: 14px 28px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .quote-button {
+            background: #fdfd96;
+            color: #000000;
+
+            box-shadow:
+                0 4px 15px rgba(255,69,0,0.4);
+        }
+
+        .quote-button:hover {
+            transform: translateY(-3px);
+            background: #ffffff;
+        }
+
+        .service-button {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .service-button:hover {
+            background: white;
+            color: #ff6a00;
+        }
+        .section {
+            padding: 80px 6%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 2.7rem;
+            margin-bottom: 10px;
+
+            color: #ffffff;
+
+            text-shadow:
+                2px 2px 6px rgba(0,0,0,0.35);
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: auto;
+
+            font-size: 1rem;
+        }
+
+        .benefits-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,106,0,0.95),
+                    rgba(238,9,121,0.9)
+                );
+        }
+
+        .benefit-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.15);
+
+            border:
+                1px solid rgba(255,255,255,0.25);
+
+            border-radius: 16px;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            backdrop-filter: blur(8px);
+
+            transition: 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+
+            background:
+                rgba(255,255,255,0.22);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            color: #fff38a;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            line-height: 1.6;
+        }
+
+        .services-section {
+            background:
+                rgba(0,0,0,0.12);
+        }
+
+        .service-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .service-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6a00,
+                    #ee0979
+                );
+
+            border-radius: 16px;
+
+            padding: 30px 22px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.25);
+
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: #fff38a;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .about-section {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.25),
+                    rgba(0,0,0,0.25)
+                ),
+                url("panelbg.png");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about-box {
+            max-width: 1000px;
+            margin: auto;
+
+            background:
+                rgba(0,0,0,0.55);
+
+            padding: 45px;
+
+            border-radius: 18px;
+
+            backdrop-filter: blur(5px);
+
+            text-align: center;
+        }
+
+        .about-box h2 {
+            color: #fff38a;
+            font-size: 2.5rem;
+        }
+
+        .about-box p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .login-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6a00,
+                    #ee0979
+                );
+        }
+
+        .login-box {
+            max-width: 900px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 40px;
+
+            background:
+                rgba(0,0,0,0.2);
+
+            padding: 40px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .login-information h2 {
+            color: #fff38a;
+            font-size: 2.2rem;
+        }
+
+        .login-information p {
+            line-height: 1.7;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .login-form input,
+        .login-form select {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+            border-radius: 7px;
+
+            font-family: Tahoma, sans-serif;
+        }
+
+        .login-form input:focus,
+        .login-form select:focus {
+            outline: 2px solid #fff38a;
+        }
+
+        .login-button {
+            border: none;
+
+            padding: 13px;
+
+            border-radius: 8px;
+
+            background: #fdfd96;
+
+            color: #000;
+
+            font-weight: bold;
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .login-button:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .signup-link {
+            text-align: center;
+            color: white;
+        }
+
+        .signup-link a {
+            color: #fff38a;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .testimonial-section {
+            background:
+                rgba(0,0,0,0.18);
+        }
+
+        .testimonial-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background:
+                rgba(255,255,255,0.15);
+
+            border:
+                1px solid rgba(255,255,255,0.2);
+
+            border-radius: 16px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .stars {
+            color: #fff38a;
+            font-size: 1.3rem;
+        }
+
+        .testimonial-card p {
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .customer-name {
+            font-weight: bold;
+            color: #fff38a;
+        }
+
+        .cta-section {
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6a00,
+                    #ee0979
+                );
+
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        .faq-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        details {
+            background:
+                rgba(0,0,0,0.25);
+
+            margin-bottom: 12px;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+        }
+
+        summary {
+            font-weight: bold;
+            color: #fff38a;
+        }
+
+        details p {
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #171717;
+
+            padding: 60px 6% 20px;
+        }
+
+        .footer-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr;
+
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            color: #fff38a;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p,
+        .footer-column li {
+            color: #cccccc;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            color: #cccccc;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: #fff38a;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 35px;
+            height: 35px;
+
+            background: #ff6a00;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            font-weight: bold;
+        }
+
+        .copyright {
+            max-width: 1100px;
+
+            margin: 40px auto 0;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid #444;
+
+            text-align: center;
+
+            color: #888;
+
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                gap: 12px;
+                font-size: 0.85rem;
+            }
+
+            .main-title {
+                font-size: 5rem;
+            }
+
+            .service-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .benefit-grid,
+            .testimonial-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .login-box {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .solar-panel {
+                min-height: 580px;
+            }
+
+            .main-title {
+                font-size: 3.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.4rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .service-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .about-box,
+            .login-box {
+                padding: 25px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="#home" class="nav-logo">
+        <span class="sun">SUN</span>
+        <span class="son">SON</span>
+        <span class="solar">SOLAR</span>
+    </a>
+
+    <nav>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#services">Services</a>
+            </li>
+
+            <li>
+                <a href="#about">About Us</a>
+            </li>
+
+            <li>
+                <a href="#faq">FAQ</a>
+            </li>
+
+            <li>
+                <a href="#contact">Support</a>
+            </li>
+
+            <li>
+                <a href="#login" class="nav-login">
+                    Login
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<section class="solar-panel" id="home">
+
+    <div class="hero-content">
+
+        <h1 class="main-title">
+
+            <span class="sun">SUN</span>
+            <span class="son">SON</span>
+            <span class="solar">SOLAR</span>
+
+        </h1>
+
+        <h2 class="hero-tagline">
+            POWER YOUR FUTURE WITH SOLAR
+        </h2>
+
+        <p class="hero-description">
+
+            Discover smarter, cleaner, and more sustainable
+            energy solutions for your home or business.
+            Sun Son Solar helps you take control of your
+            energy future while saving on electricity costs.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#contact"
+               class="hero-button quote-button">
+                REQUEST A FREE QUOTE
+            </a>
+
+            <a href="#services"
+               class="hero-button service-button">
+                EXPLORE SERVICES
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section benefits-section">
+
+    <div class="section-title">
+
+        <h2>WHY GO SOLAR?</h2>
+
+        <p>
+            Solar power is more than just an alternative
+            energy source. It is an investment in your
+            future.
+        </p>
+
+    </div>
+
+
+    <div class="benefit-grid">
+
+        <div class="benefit-card">
+
+            <div class="benefit-icon">
+                
+            </div>
+
+            <h3>COST SAVINGS</h3>
+
+            <p>
+                Reduce your dependence on traditional
+                electricity and potentially lower your
+                long-term energy expenses.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <div class="benefit-icon">
+                
+            </div>
+
+            <h3>SUSTAINABILITY</h3>
+
+            <p>
+                Use clean and renewable energy while
+                helping reduce your environmental impact.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <div class="benefit-icon">
+                
+            </div>
+
+            <h3>ENERGY INDEPENDENCE</h3>
+
+            <p>
+                Generate your own electricity and gain
+                greater control over your energy needs.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section services-section"
+         id="services">
+
+    <div class="section-title">
+
+        <h2>OUR SERVICES</h2>
+
+        <p>
+            From planning your solar system to keeping it
+            running efficiently, our team is ready to help.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+        <div class="service-card">
+
+            <div class="service-icon">
+        
+            </div>
+
+            <h3>CONSULTATION</h3>
+
+            <p>
+                Talk with our team about your energy needs
+                and discover the right solar solution.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                
+            </div>
+
+            <h3>INSTALLATION</h3>
+
+            <p>
+                Professional solar panel installation
+                designed around your property.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                
+            </div>
+
+            <h3>MAINTENANCE</h3>
+
+            <p>
+                Keep your solar system operating efficiently
+                with proper inspection and maintenance.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                
+            </div>
+
+            <h3>SOLAR ASSESSMENT</h3>
+
+            <p>
+                Understand your property's solar potential
+                and possible energy savings.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section about-section"
+         id="about">
+
+    <div class="about-box">
+
+        <h2>ABOUT SUN SON SOLAR</h2>
+
+        <p>
+            Sun Son Solar is dedicated to helping households
+            and businesses move toward cleaner and smarter
+            energy solutions.
+        </p>
+
+        <p>
+            Our goal is to make solar energy easier to
+            understand and more accessible by providing
+            professional consultation, installation,
+            maintenance, and customer support.
+        </p>
+
+        <p>
+            We believe that powering your home or business
+            should not come at the expense of the environment.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="section login-section"
+         id="login">
+
+    <div class="login-box">
+
+        <div class="login-information">
+
+            <h2>WELCOME BACK!</h2>
+
+            <p>
+                Access your Sun Son Solar account to manage
+                your services, appointments, requests, and
+                communications.
+            </p>
+
+            <p>
+                <strong>Customers:</strong>
+                You can create your own account and manage
+                your solar service requests.
+            </p>
+
+            <p>
+                <strong>Employees:</strong>
+                Employee accounts are created and managed
+                by HR or an authorized administrator.
+            </p>
+
+        </div>
+
+
+        <form class="login-form">
+
+            <input
+                type="text"
+                placeholder="Username or Email"
+                required
+            >
+
+            <input
+                type="password"
+                placeholder="Password"
+                required
+            >
+
+            <select required>
+
+                <option value="" disabled selected>
+                    Account Type
+                </option>
+
+                <option value="customer">
+                    Customer
+                </option>
+
+                <option value="employee">
+                    Employee
+                </option>
+
+            </select>
+
+            <button
+                type="submit"
+                class="login-button">
+
+                LOGIN
+
+            </button>
+
+            <div class="signup-link">
+
+                New customer?
+
+                <a href="signup.html">
+                    Create an account
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<section class="section testimonial-section">
+
+    <div class="section-title">
+
+        <h2>Our Customer Feedbacks</h2>
+
+        <p>
+            Experiences of our Previous Customers
+        </p>
+
+    </div>
+
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                "Now my plants receive even more sunlight thanks to this team, Now I can fight more zombies more frequently"
+            </p>
+
+            <div class="customer-name">
+                — Crazy Dave
+            </div>
+
+        </div>
+
+
+        <div class="testimonial-card">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                "The Products I bought made my power grows more stronger everyday."
+            </p>
+
+            <div class="customer-name">
+                — Escanor Lion Sin
+            </div>
+
+        </div>
+
+
+        <div class="testimonial-card">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                "With this, I can conquer the whole greek pantheon with the power of the sun!"
+            </p>
+
+            <div class="customer-name">
+                — Helios Sun God
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta-section"
+         id="contact">
+
+    <h2>
+        READY TO GO SOLAR?
+    </h2>
+
+    <p>
+        Start your journey toward cleaner,
+        smarter, and more independent energy.
+    </p>
+
+    <a href="#" class="hero-button quote-button">
+        REQUEST A FREE QUOTE
+    </a>
+
+</section>
+
+<section class="section"
+         id="faq">
+
+    <div class="section-title">
+
+        <h2>FREQUENTLY ASKED QUESTIONS</h2>
+
+        <p>
+            Here are answers to some common questions
+            about solar energy and our services.
+        </p>
+
+    </div>
+
+
+    <div class="faq-container">
+
+        <details>
+
+            <summary>
+                How does solar energy work?
+            </summary>
+
+            <p>
+                Solar panels capture sunlight and convert
+                it into electricity that can be used to
+                power homes and businesses.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can solar power reduce my electricity bill?
+            </summary>
+
+            <p>
+                Solar energy can reduce your dependence
+                on electricity from the grid and may help
+                lower your electricity expenses.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Do solar panels require maintenance?
+            </summary>
+
+            <p>
+                Solar systems require periodic inspection
+                and maintenance to help keep them operating
+                efficiently.
+            </p>
+
+        </details>
+        <details>
+
+            <summary>
+                How can I request a solar consultation?
+            </summary>
+
+            <p>
+                You can contact Sun Son Solar through our
+                support section or request a free quote
+                through our website.
+            </p>
+
+        </details>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-grid">
+
+
+        <div class="footer-column">
+
+            <h3>SUN SON SOLAR</h3>
+
+            <p>
+                Powering a brighter future through
+                clean, sustainable, and reliable
+                solar energy.
+            </p>
+
+            <div class="social-links">
+
+                <a href="#">f</a>
+                <a href="#">𝕏</a>
+                <a href="#">in</a>
+                <a href="#">◎</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>COMPANY</h3>
+
+            <ul>
+
+                <li>
+                    <a href="#about">
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#services">
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#faq">
+                        FAQ
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>SUPPORT</h3>
+
+            <ul>
+
+                <li>
+                    <a href="#contact">
+                        Contact Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#login">
+                        Customer Login
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Request a Quote
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>CONTACT</h3>
+
+            <ul>
+
+                <li>
+                     Philippines
+                </li>
+
+                <li>
+                     +63 XXX XXX XXXX
+                </li>
+
+                <li>
+                     info@sunsunsolar.com
+                </li>
+
+                <li>
+                     Mon - Sat: 8AM - 5PM
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Sun Son Solar.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
+```
